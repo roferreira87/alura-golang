@@ -6,24 +6,10 @@ import (
 	"os"
 )
 
-//import "net/http"
-
-
-
 func main() {
 
-	// if comando == 1 {
-	// 	fmt.Println("Monitorando...")
-	// } else if comando == 2 {
-	// 	fmt.Println("Exibindo Logs...")
-	// } else if comando == 0 {
-	// 	fmt.Println("Saindo do programa")
-	// } else {
-	// 	fmt.Println("Não conheço")
-	// }
-
 	exibeIntroducao()
-	
+
 	for {
 		exibeMenu()
 
@@ -42,9 +28,8 @@ func main() {
 			os.Exit(-1)
 		}
 	}
-	
-}
 
+}
 
 func exibeIntroducao() {
 	nome := "Rogério"
@@ -65,19 +50,26 @@ func leComando() int {
 	var comandoLido int
 	fmt.Scan(&comandoLido)
 	fmt.Println("O comando escolhido foi", comandoLido)
-	
+
 	return comandoLido
 }
 
-func iniciaMonitoramento () {
+func iniciaMonitoramento() {
 	fmt.Println("Monitorando...")
+	sites := []string{"https://random-status-code.herokuapp.com/", "https://www.alura.com.br", "https://www.caelum.com.br"}
+
+	//fmt.Println(sites)
+
+	for i, site := range sites {
+		fmt.Println("Estou passando na  posicao", i, "do meu slice e essa posicao tem o site:", site)
+	}
+
 	site := "https://www.alura.com.br"
 	resp, _ := http.Get(site)
-	//fmt.Println(resp)
 
 	if resp.StatusCode == 200 {
 		fmt.Println("Site", site, "foi carregado com sucesso!")
-	}else{
+	} else {
 		fmt.Println("site", site, "esta com problema. Status Code:", resp.StatusCode)
 	}
 }
