@@ -39,8 +39,6 @@ func exibeIntroducao() {
 }
 
 func exibeMenu() {
-	exibeIntroducao()
-
 	fmt.Println("1- Iniciar Monitoramento")
 	fmt.Println("2- Exibir os Logs")
 	fmt.Println("0- Sair do Programa")
@@ -61,10 +59,15 @@ func iniciaMonitoramento() {
 	//fmt.Println(sites)
 
 	for i, site := range sites {
-		fmt.Println("Estou passando na  posicao", i, "do meu slice e essa posicao tem o site:", site)
+		fmt.Println("Testando site", i, ":", site)
+		testaSite(site)
 	}
 
-	site := "https://www.alura.com.br"
+	fmt.Println("")
+
+}
+
+func testaSite(site string) {
 	resp, _ := http.Get(site)
 
 	if resp.StatusCode == 200 {
